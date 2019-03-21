@@ -1,0 +1,10 @@
+FirewallOptions:
+  FirewallType: "IPSet"
+  WhitelistFirewallCreateCommand: "IPset -N WhitelistIPS hash:ip hashsize 4096"
+  BlacklistFirewallCreateCommand: "IPSet -N BlacklistIPS hash:ip hashsize 4096"
+  WhitelistUpdate: "iptables -I INPUT -m set --match-set whitelist src -j ACCEPT"
+  BlacklistUpdate: "iptables -I INPUT -m set --match-set blacklist src -j DROP"
+  AddCommandWhitelist: "ipset add WhitelistIPS {IP}"
+  RemoveCommandWhitelist: "ipset del WhitelistIPS {IP}"
+  AddCommandBlacklist: "ipset add BlacklistIPS {IP}"
+  RemoveCommandBlacklist: "ipset del BlacklistIPS {IP}"

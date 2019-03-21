@@ -1,0 +1,20 @@
+PluginOptions:
+  Prefix: "&7[&bDefiant-Security&7]"
+  DateFormat: "yyyy-dd-MM"
+
+Messages:
+  AddedBlacklist: "&2IP was added to the blacklist."
+  RemovedBlacklist: "&2IP was removed from the blacklist."
+  AddedWhitelist: "&2IP was added to the whitelist."
+  RemovedWhitelist: "&2IP was removed from the whitelist."
+  InvalidArguments: "&2Not enough arguments, please try /ap help"
+  Reloaded: "&2Plugin was reloaded."
+  NoPermission: "&4You do not have permission for this command"
+  ToManyPlayersOnIP: "&4You may not login with IP {IP} as there are {Limit} players already online."
+
+NotifyAdminMessages:
+  BlacklistHitMessage: "Player {Player} tried to login with an IP({IP} found within local cache, access denied."
+  BlockedCountryMessage: "Player {Player} is using an IP({IP}) from a blocked country({country}) access denied."
+  DeathBotBlockedMessage: "Player {Player} found using known {Type} proxies of botting software, {IP} was denied access."
+  RestfulAPIDetectionMessage: "Player {Player} found using a VPN/Proxied IP({IP}) was denied access."
+  MaxPlayerPerIPMessage: "Player {Player} has logged in with {alts} and hit the limit, access was denied."

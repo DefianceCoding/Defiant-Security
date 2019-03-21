@@ -1,0 +1,13 @@
+name: DefiantSecurity-Spigot
+version: 2.0.1
+main: me.defiancecoding.defiantsecurity.DefiantSecurity
+api-version: 1.13
+softdepend: [ActionBarAPI]
+author: DefianceCoding
+description: Security that stops bots at the door
+website: https://www.spigotmc.org/resources/authors/defiancecoding.200281/
+
+commands:
+  DefiantSecurity:
+    description: Main command for defiantsecurity
+    aliases: [ab,ap,antibot,antiproxy,ds]

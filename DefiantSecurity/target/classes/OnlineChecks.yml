@@ -1,0 +1,19 @@
+IPHub:
+  UseAPI: false
+  UseSSL: true
+  Timeout: 5000
+  APIKey: "null"
+
+IPQualityScore:
+  UseAPI: false
+  UseSSL: true
+  Timeout: 5000
+  APIKey: "null"
+  UseFastMode: true
+  Strictness: 0
+
+ProxyCheck:
+  UseAPI: true
+  UseSSL: true
+  Timeout: 5000
+  APIKey: "null"

@@ -1,0 +1,13 @@
+# Permissions: This section is the permissions need to have to use certain parts of the plugin
+# NOTE BEING OPPED DOES NOT GIVE YOU ALL PERMISSIONS LISTED, most are self explained as
+# the sections names pertain what they refer to, you may change the text inside the quotations.
+# Note you must give a player this permission to prevent issues in the plugin
+Permissions:
+  WhitelistAdd: "DefiantSecurity.WhitelistAdd"
+  BlacklistAdd: "DefiantSecurity.BlacklistAdd"
+  WhitelistRemove: "DefiantSecurity.WhitelistRemove"
+  BlacklistRemove: "DefiantSecurity.BlacklistRemove"
+  Help: "DefiantSecurity.Commands"
+  NotifyAdmin: "DefiantSecurity.Admin"
+  CheckUser: "DefiantSecurity.Check"
+  Reload: "DefiantSecurity.Reload"

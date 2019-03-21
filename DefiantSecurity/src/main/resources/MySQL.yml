@@ -1,0 +1,11 @@
+# MySQLOptions - this module is set to store data in a more efficient way than standard YAML.
+# if you are unsure what MySQL is, please leave this default, otherwise just enter the info listed below and
+# change useSQL to true
+# NOTE: this plugin auto creates tables, you will need to make a new database manually for this to work.
+MySQLOptions:
+  useSQL: false
+  Username: "Username"
+  Password: "Password"
+  Port: 3306
+  Database: "Database"
+  Hostname: "Host.Name.Here"

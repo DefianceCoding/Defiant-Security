@@ -1,0 +1,9 @@
+Modules:
+  Firewall: false
+  GeoIP: true
+  MySQL: true
+  OnlineDatabase: true
+  PlayerPerIPLimit: true
+  miscOptions: 
+    MaxPlayersPerIP: 5
+    AdminMessageDeliveryType: "Chat"

@@ -1,0 +1,6 @@
+Commands:
+  BlacklistHitCommand: "kick {PlayerName} your IP[{IP}] has been blacklisted from the server.{NewLine}Please contact an administrator if you think this was an error."
+  BlockedCountryCommand: "kick {PlayerName} your country{[CountryName]} has been restricted from this server. {NewLine}Please contact an administrator if you think this was an error."
+  DeathBotBlockedCommand: "kick {PlayerName} your IP[{IP}] was found in our DeathBot Honeypot.{NewLine}Please contact an administrator if you think this was an error."
+  RestfulAPIDetectionCommand: "kick {PlayerName} your IP[{IP}] has been blacklisted from the server. {NewLine}Please contact an administrator if you think this was an error."
+  MaxPlayerPerIPCommand: "kick {PlayerName} To many players are logged in with the same IP. {NewLine} Please contact an administrator if you think this is an error"
