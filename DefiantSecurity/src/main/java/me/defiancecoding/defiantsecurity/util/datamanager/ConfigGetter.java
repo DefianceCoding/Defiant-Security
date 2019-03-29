@@ -56,6 +56,10 @@ public class ConfigGetter {
 		return new ConfigHandler(main, "Blacklist.yml");
 	}
 
+	public FileConfiguration getPlayerWhitelist() {
+		return new ConfigHandler(main, "PlayerWhitelist.yml");
+	}
+
 	/*
 	 * Reload Section
 	 */
@@ -110,6 +114,11 @@ public class ConfigGetter {
 		handler.reload();
 	}
 
+	public void reloadPlayerWhitelist() {
+		ConfigHandler handler = new ConfigHandler(main, "PlayerWhitelist");
+		handler.reload();
+	}
+
 	/*
 	 * Save Section
 	 */
@@ -161,6 +170,11 @@ public class ConfigGetter {
 
 	public void saveBlacklist() {
 		ConfigHandler handler = new ConfigHandler(main, "Blacklist.yml");
+		handler.save();
+	}
+
+	public void savePlayerWhitelist() {
+		ConfigHandler handler = new ConfigHandler(main, "PlayerWhitelist.yml");
 		handler.save();
 	}
 

@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.Plugin;
 
 import me.defiancecoding.defiantsecurity.DefiantSecurity;
 
@@ -14,7 +15,7 @@ public class ConfigHandler extends YamlConfiguration {
 
 	private File file;
 	private String defaults;
-	private DefiantSecurity plugin;
+	private Plugin plugin;
 
 	/**
 	 * Creates new PluginFile, without defaults

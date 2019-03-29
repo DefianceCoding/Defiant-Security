@@ -1,6 +1,6 @@
 package me.defiancecoding.defiantsecurity.events;
 
-import org.apache.http.concurrent.Cancellable;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
@@ -33,7 +33,7 @@ public class CountryBlockEvent extends Event implements Cancellable {
 	}
 
 	@Override
-	public boolean cancel() {
+	public boolean isCancelled() {
 		return this.isCancelled;
 	}
 

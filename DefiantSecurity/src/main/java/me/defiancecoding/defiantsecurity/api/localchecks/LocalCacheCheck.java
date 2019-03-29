@@ -23,7 +23,7 @@ public class LocalCacheCheck {
 
 	public boolean checkDeathBot(String ip) {
 		try {
-			dbs4 = new DeathBot(ip, "S4");
+			this.dbs4 = new DeathBot(ip, "S4");
 			dbs5 = new DeathBot(ip, "S5");
 			dbssl = new DeathBot(ip, "SSL");
 			if (dbs4.isDeathBotProxy() || dbs5.isDeathBotProxy() || dbssl.isDeathBotProxy()) {

@@ -13,56 +13,56 @@ import me.defiancecoding.defiantsecurity.util.mysql.mysql.MySQL;
 public class SQLUtil {
 
 	private Connection c;
+	private MySQL sql;
 	private DefiantSecurity main;
+
+	private ConfigGetter cfg;
+	private String user;
+	private String pass;
+	private String hostname;
+	private String port;
+	private String database;
 
 	public SQLUtil(DefiantSecurity main) {
 		this.main = main;
+		setupConfigValues();
 	}
 
-	private ConfigGetter cfg = new ConfigGetter(main);
-
-	private String user = cfg.getMySQL().getString("MySQL.User");
-	private String pass = cfg.getMySQL().getString("MySQL.Password");
-	private String hostname = cfg.getMySQL().getString("MySQL.Hostname");
-	private String port = cfg.getMySQL().getString("MySQL.Port");
-	private String database = cfg.getMySQL().getString("MySQL.Database");
-
-	public void createTable() throws SQLException {
+	private void setupConfigValues() {
+		cfg = new ConfigGetter(main);
+		this.user = cfg.getMySQL().getString("MySQL.User");
+		this.pass = cfg.getMySQL().getString("MySQL.Password");
+		this.hostname = cfg.getMySQL().getString("MySQL.Hostname");
+		this.port = cfg.getMySQL().getString("MySQL.Port");
+		this.database = cfg.getMySQL().getString("MySQL.Database");
+		sql = new MySQL(this.hostname, this.port, this.database, this.user, this.pass);
 		try {
-			MySQL sql = new MySQL(hostname, port, database, user, pass);
 			c = sql.openConnection();
-
-			Statement statement = c.createStatement();
-			String upd1 = "CREATE TABLE IF NOT EXISTS `" + database + "` ( `UID` "
-					+ "INT NULL DEFAULT NULL AUTO_INCREMENT COMMENT 'UID' , `IP` TEXT NOT NULL COMMENT 'PlayerIP' ,"
-					+ " UNIQUE `UID` (`UID`)) ENGINE = InnoDB;";
-			statement.executeUpdate(upd1);
-			c.close();
-
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
+			c = null;
 			e.printStackTrace();
 		}
 	}
 
-	public void deleteTable(String database) throws SQLException {
-		try {
-			MySQL sql = new MySQL(hostname, port, database, user, pass);
-			c = sql.openConnection();
-			Statement statement = c.createStatement();
-			String upd1 = "DROP TABLE `" + database + "`;";
-			statement.executeUpdate(upd1);
-			c.close();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void createTable(String tableName) throws SQLException {
+		Statement statement = c.createStatement();
+		String upd1 = "CREATE TABLE IF NOT EXISTS `" + tableName + "` ( `UID` "
+				+ "INT NULL DEFAULT NULL AUTO_INCREMENT COMMENT 'UID' , `IP` TEXT NOT NULL COMMENT 'PlayerIP' ,"
+				+ " UNIQUE `UID` (`UID`)) ENGINE = InnoDB;";
+		statement.executeUpdate(upd1);
+		c.close();
+	}
+
+	public void deleteTable(String tableName) throws SQLException {
+		Statement statement = c.createStatement();
+		String upd1 = "DROP TABLE `" + tableName + "`;";
+		statement.executeUpdate(upd1);
+		c.close();
 	}
 
 	public boolean valueExists(String table, String data) {
 		try {
-			MySQL sql = new MySQL(hostname, port, database, user, pass);
-			c = sql.openConnection();
 			String SQLQuery = ("SELECT * FROM `" + table + "` WHERE IP= '" + data + ";");
 			Statement statement = c.createStatement();
 			ResultSet rs = statement.executeQuery(SQLQuery);
@@ -73,7 +73,7 @@ public class SQLUtil {
 				hasNext = false;
 			c.close();
 			return hasNext;
-		} catch (SQLException | ClassNotFoundException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return false;
@@ -82,14 +82,12 @@ public class SQLUtil {
 	public void addValue(String table, String IP) {
 		PreparedStatement ps = null;
 		try {
-			MySQL sql = new MySQL(hostname, port, database, user, pass);
-			c = sql.openConnection();
 			ps = c.prepareStatement("INSERT INTO " + table + " (`UID`, `IP`) VALUES (?,?);");
 			ps.setString(1, "NULL");
 			ps.setString(2, "'" + IP + "'");
 			ps.executeUpdate();
 			c.close();
-		} catch (SQLException | ClassNotFoundException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
@@ -97,13 +95,11 @@ public class SQLUtil {
 	public void removeValue(String table, String IP) {
 		String query = "DELETE FROM " + table + " WHERE IP=?;";
 		try {
-			MySQL sql = new MySQL(hostname, port, database, user, pass);
-			c = sql.openConnection();
 			PreparedStatement statement = c.prepareStatement(query);
 			statement.setString(1, IP);
 			statement.executeUpdate();
 			c.close();
-		} catch (SQLException | ClassNotFoundException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}

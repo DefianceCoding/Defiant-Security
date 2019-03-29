@@ -2,10 +2,8 @@ package me.defiancecoding.defiantsecurity.util.maxmind;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 import org.apache.commons.compress.archivers.ArchiveException;
-import org.apache.commons.io.FileUtils;
 
 import me.defiancecoding.defiantsecurity.DefiantSecurity;
 import me.defiancecoding.defiantsecurity.util.archiver.Untar;
@@ -47,19 +45,8 @@ public class GetMaxmindDatabase {
 		}
 	}
 
-	public File getDatabase() throws IOException {
-		File dir = new File(main.getDataFolder().getAbsolutePath());
-		String[] extensions = new String[] { "mmdb", "csv" };
-		File temp = null;
-
-		System.out.println(
-				"Getting all database files in " + dir.getCanonicalPath() + " including those in subdirectories");
-		List<File> files = (List<File>) FileUtils.listFiles(dir, extensions, true);
-		for (File file : files) {
-			System.out.println("file: " + file.getCanonicalPath());
-			temp = file.getAbsoluteFile();
-		}
-		return temp;
+	public File getDatabase() {
+		return new File(main.getDataFolder() + File.pathSeparator + "GeoLite2-City_20190319", "GeoLite2-City.mmdb");
 	}
 
 }

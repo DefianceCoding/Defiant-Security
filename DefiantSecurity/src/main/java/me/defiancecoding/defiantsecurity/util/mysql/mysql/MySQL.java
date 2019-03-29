@@ -1,10 +1,10 @@
 package me.defiancecoding.defiantsecurity.util.mysql.mysql;
 
-import me.defiancecoding.defiantsecurity.util.mysql.Database;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
+import me.defiancecoding.defiantsecurity.util.mysql.Database;
 
 /**
  * Connects to and uses a MySQL database
@@ -54,13 +54,12 @@ public class MySQL extends Database {
 			return connection;
 		}
 
-		String connectionURL = "jdbc:me.defiancecoding.defiantsecurity.defiantsecurity.util.mysql://" + this.hostname
-				+ ":" + this.port;
+		String connectionURL = "jdbc:mysql://" + this.hostname + ":" + this.port;
 		if (database != null) {
 			connectionURL = connectionURL + "/" + this.database;
 		}
 
-		Class.forName("com.me.defiancecoding.defiantsecurity.defiantsecurity.util.mysql.jdbc.Driver");
+		Class.forName("com.mysql.jdbc.Driver");
 		connection = DriverManager.getConnection(connectionURL, this.user, this.password);
 		return connection;
 	}
